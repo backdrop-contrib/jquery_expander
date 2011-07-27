@@ -1,0 +1,36 @@
+<?php
+
+/**
+ * @file
+ * Field formatter to expand and collapse text of a field.
+ */
+
+/**
+ * Implement hook_field_formatter_info().
+ */
+function jquery_expander_field_formatter_info() {
+  return array(
+    'jquery_expander' => array(
+      'label' => t('Expander'),
+      'field types' => array('text', 'text_long'),
+    ),
+  );
+}
+
+/**
+ * Implements hook_field_formatter_view().
+ */
+function jquery_expander_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
+  $element = array();
+
+  foreach ($items as $delta => $item) {
+    $output = _text_sanitize($instance, $langcode, $item, 'value');
+    $element[$delta] = array('#markup' => $output);
+    $element[$delta]['#attached']['js'] = array(
+      array(libraries_get_path('jquery_expander') . '/jquery.expander.js'),
+      array('data' => array('jqueryExpander' => array($field['field_name'] => array())), 'type' => 'setting'),
+    );
+  }
+
+  return $element;
+}
