@@ -12,7 +12,7 @@ function jquery_expander_field_formatter_info() {
   return array(
     'jquery_expander' => array(
       'label' => t('Expander'),
-      'field types' => array('text', 'text_long'),
+      'field types' => array('text', 'text_long', 'text_with_summary'),
     ),
   );
 }
@@ -22,14 +22,20 @@ function jquery_expander_field_formatter_info() {
  */
 function jquery_expander_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
   $element = array();
+  static $delta = array();
 
   foreach ($items as $delta => $item) {
     $output = _text_sanitize($instance, $langcode, $item, 'value');
-    $element[$delta] = array('#markup' => $output);
+    $element[$delta] = array(
+      '#markup' => $output,
+      '#prefix' => '<div class="field-expander-' . $delta . '">',
+      '#suffix' => '</div>'
+    );
     $element[$delta]['#attached']['js'] = array(
       array(libraries_get_path('jquery_expander') . '/jquery.expander.js'),
-      array('data' => array('jqueryExpander' => array($field['field_name'] => array())), 'type' => 'setting'),
+      array('data' => array('jqueryExpander' => array($delta => array())), 'type' => 'setting'),
     );
+    ++$delta;
   }
 
   return $element;

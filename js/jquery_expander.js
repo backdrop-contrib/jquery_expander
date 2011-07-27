@@ -9,7 +9,7 @@ Drupal.behaviors.jqueryExpander = {
     var jqueryExpander = Drupal.settings.jqueryExpander;
       // Add the jQuery expander.
       for (var key in jqueryExpander) {
-        // $('#' + jqueryExpander[key]['child'] + ':input').chained('#' + chaniedSelects[key]['parent'] + ':input');
+        $('.field-expander-' + key).expander();
       }
     }
 };
