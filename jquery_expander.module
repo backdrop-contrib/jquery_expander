@@ -14,8 +14,9 @@ function jquery_expander_field_formatter_info() {
       'label' => t('Expander'),
       'field types' => array('text', 'text_long', 'text_with_summary'),
       'settings' => array(
-        // Add only default settings with text, so we can wrap them in t().
+        // Add default settings with text, so we can wrap them in t().
         'expandText' => t('Expand') . ' »',
+        'expandPrefix' => '...',
         'userCollapseText' => t('Collapse'),
       ),
     ),
@@ -96,7 +97,7 @@ function jquery_expander_field_formatter_settings_summary($field, $instance, $vi
 function jquery_expander_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
   $element = array();
   static $delta = array();
-  $settings = array_filter($display['settings']);
+  $settings = $display['settings'];
 
   foreach ($items as $delta => $item) {
     $output = _text_sanitize($instance, $langcode, $item, 'value');
