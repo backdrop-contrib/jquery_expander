@@ -6,9 +6,9 @@
 Drupal.behaviors.jqueryExpander = {
   attach: function (context) {
   
-    var jqueryExpander = Drupal.settings.jqueryExpander;
+    var expander = Drupal.settings.jqueryExpander;
       // Add the jQuery expander.
-      for (var key in jqueryExpander) {
+      for (var key in expander) {
         $('.field-expander-' + key).expander();
       }
     }
