@@ -102,7 +102,7 @@ function jquery_expander_field_formatter_view($entity_type, $entity, $field, $in
     $output = _text_sanitize($instance, $langcode, $item, 'value');
     $element[$delta] = array(
       '#markup' => $output,
-      '#prefix' => '<div class="field-expander-' . $delta . '">',
+      '#prefix' => '<div class="field-expander field-expander-' . $delta . '">',
       '#suffix' => '</div>'
     );
     $element[$delta]['#attached']['js'] = array(
