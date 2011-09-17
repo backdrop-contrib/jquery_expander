@@ -46,13 +46,6 @@ function jquery_expander_field_formatter_settings_form($field, $instance, $view_
     '#default_value' => $settings['expandPrefix'],
   );
 
-  $element['expandPrefix'] = array(
-    '#type' => 'textfield',
-    '#title' => t('Expand prefix'),
-    '#description' => t('Text to come before the expand link.'),
-    '#default_value' => $settings['expandPrefix'],
-  );
-
   $element['collapseTimer'] = array(
     '#type' => 'textfield',
     '#title' => t('Collapse timer'),
