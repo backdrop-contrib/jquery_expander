@@ -18,6 +18,7 @@ function jquery_expander_field_formatter_info() {
         'expandText' => t('Expand') . ' »',
         'expandPrefix' => '...',
         'collapseTimer' => FALSE,
+        'slicePoint' => 50,
         'userCollapseText' => t('Collapse'),
         'userCollapsePrefix' => FALSE,
       ),
@@ -46,6 +47,14 @@ function jquery_expander_field_formatter_settings_form($field, $instance, $view_
     '#title' => t('Expand prefix'),
     '#description' => t('Text to come before the expand link.'),
     '#default_value' => $settings['expandPrefix'],
+  );
+
+  $element['slicePoint'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Slice point'),
+    '#description' => t('Text size in charachters before the expand link.'),
+    '#default_value' => $settings['slicePoint'],
+    '#element_validate' => array('_element_validate_integer_positive'),
   );
 
   $element['collapseTimer'] = array(
