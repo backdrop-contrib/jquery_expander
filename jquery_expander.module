@@ -17,7 +17,9 @@ function jquery_expander_field_formatter_info() {
         // Add default settings with text, so we can wrap them in t().
         'expandText' => t('Expand') . ' »',
         'expandPrefix' => '...',
+        'collapseTimer' => FALSE,
         'userCollapseText' => t('Collapse'),
+        'userCollapsePrefix' => FALSE,
       ),
     ),
   );
