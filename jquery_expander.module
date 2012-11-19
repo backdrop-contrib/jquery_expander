@@ -20,7 +20,7 @@ function jquery_expander_field_formatter_info() {
         'collapseTimer' => FALSE,
         'slicePoint' => 50,
         'userCollapseText' => t('Collapse'),
-        'userCollapsePrefix' => FALSE,
+        'userCollapsePrefix' => '',
       ),
     ),
   );
