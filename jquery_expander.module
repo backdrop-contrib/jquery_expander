@@ -103,6 +103,16 @@ function jquery_expander_field_formatter_view($entity_type, $entity, $field, $in
   static $delta = array();
   $settings = $display['settings'];
 
+  // Translate expand and collapse text if the i18n_field module is enabled.
+  // At the moment we only have one string for all view modes as we cannot
+  // access the current view mode in this hook.
+  if (module_exists('i18n_field')) {
+    $translatable_settings = array('expandText', 'userCollapseText');
+    foreach ($translatable_settings as $key) {
+      $settings[$key] = i18n_string_translate('field:' . $instance['field_name'] . ':' . $instance['bundle'] . ':' . $key . ':default', $settings[$key]);
+    }
+  }
+
   foreach ($items as $delta => $item) {
     $output = _text_sanitize($instance, $langcode, $item, 'value');
     $element[$delta] = array(
@@ -119,4 +129,24 @@ function jquery_expander_field_formatter_view($entity_type, $entity, $field, $in
   }
 
   return $element;
+}
+
+/**
+ * Implements hook_i18n_string_list_TEXTGROUP_alter().
+ */
+function jquery_expander_i18n_string_list_field_alter(&$strings, $type = NULL, $instance = NULL) {
+  // Register expand and collapse strings.
+  // At the moment we only have one string for all view modes as we cannot
+  // access the current view mode in this hook_field_formatter_view().
+  if (isset($instance['widget']['type']) && $instance['widget']['module'] == 'text' && isset($instance['display']['default']['type']) && $instance['display']['default']['type'] == 'jquery_expander') {
+    $field_strings = &$strings['field'][$instance['field_name']][$instance['bundle']];
+    $field_strings['expandText:default'] = array(
+      'title' => t('Expand text'),
+      'string' => $instance['display']['default']['settings']['expandText'],
+    );
+    $field_strings['userCollapseText:default'] = array(
+      'title' => t('Collapse text'),
+      'string' => $instance['display']['default']['settings']['userCollapseText'],
+    );
+  }
 }
