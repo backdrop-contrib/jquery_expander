@@ -138,7 +138,7 @@ function jquery_expander_i18n_string_list_field_alter(&$strings, $type = NULL, $
   // Register expand and collapse strings.
   // At the moment we only have one string for all view modes as we cannot
   // access the current view mode in this hook_field_formatter_view().
-  if (isset($instance['widget']['type']) && $instance['widget']['module'] == 'text' && isset($instance['display']['default']['type']) && $instance['display']['default']['type'] == 'jquery_expander') {
+  if (isset($instance['widget']['module']) && $instance['widget']['module'] == 'text' && isset($instance['display']['default']['type']) && $instance['display']['default']['type'] == 'jquery_expander') {
     $field_strings = &$strings['field'][$instance['field_name']][$instance['bundle']];
     $field_strings['expandText:default'] = array(
       'title' => t('Expand text'),
