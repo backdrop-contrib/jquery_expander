@@ -52,7 +52,7 @@ function jquery_expander_field_formatter_settings_form($field, $instance, $view_
   $element['slicePoint'] = array(
     '#type' => 'textfield',
     '#title' => t('Slice point'),
-    '#description' => t('Text size in charachters before the expand link.'),
+    '#description' => t('Text size in characters before the expand link.'),
     '#default_value' => $settings['slicePoint'],
     '#element_validate' => array('_element_validate_integer_positive'),
   );
@@ -121,7 +121,7 @@ function jquery_expander_field_formatter_view($entity_type, $entity, $field, $in
       '#suffix' => '</div>'
     );
     $element[$delta]['#attached']['js'] = array(
-      drupal_get_path('module', 'jquery_expander') . '/js/jquery_expander.js' => array('type' => 'file'),
+      backdrop_get_path('module', 'jquery_expander') . '/js/jquery_expander.js' => array('type' => 'file'),
       libraries_get_path('jquery.expander') . '/jquery.expander.js' => array('type' => 'file'),
       array('data' => array('jqueryExpander' => array($delta => $settings)), 'type' => 'setting'),
     );

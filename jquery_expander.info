@@ -1,5 +1,6 @@
 name = Expander
 description = Field formatter to expand and collapse text of a field.
-core = 7.x
+backdrop = 1.x
+type = module
 
-dependecies[] = libraries
+dependencies[] = libraries
