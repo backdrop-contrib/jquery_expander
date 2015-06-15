@@ -3,10 +3,10 @@
 /**
  * jQuery expander.
  */
-Drupal.behaviors.jqueryExpander = {
+Backdrop.behaviors.jqueryExpander = {
   attach: function (context) {
   
-    var expander = Drupal.settings.jqueryExpander;
+    var expander = Backdrop.settings.jqueryExpander;
       // Add the jQuery expander.
       for (var key in expander) {
         $('.field-expander-' + key).expander(expander[key]);
