@@ -4,20 +4,30 @@
 This module is a port to Backdrop of the Drupal contributed module 'jQuery Expander'. 
 
 The Expander Plugin is a simple little jQuery plugin to hide/collapse a portion 
-of an element's text and add a "read more" link so that the text can be viewed 
+of an element's text and add an "expand" link so that the text can be viewed 
 by the user if he or she wishes. By default, the expanded text is followed by a 
-"re-collapse" link.
+"collapse" link.
+
+This module makes use of the jQuery library to provide a new format 'expander' 
+for long text fields. This can be selected from the field display options 
+for a custom content type.
+
+Various settings are available within the jQuery library and these are described in
+the file readme.md that comes with it.
 
 
 <h2>Status</h2>
 
-This port requires thorough testing.
+This module is working in Backdrop.
+
 
 <h2>Installation</h2>
 
 This module makes use of the libraries module which should also be installed.
 
-Install this module as usual, then add the required javascript library to location /libraries
+Install this module as usual, then add the required javascript library to 
+location /libraries in a folder jquery.expander
+
 
 <h2>License</h2>
 
