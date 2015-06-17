@@ -54,7 +54,6 @@ function jquery_expander_field_formatter_settings_form($field, $instance, $view_
     '#title' => t('Slice point'),
     '#description' => t('Text size in characters before the expand link.'),
     '#default_value' => $settings['slicePoint'],
-    '#element_validate' => array('_element_validate_integer_positive'),
   );
 
   $element['collapseTimer'] = array(
@@ -62,7 +61,6 @@ function jquery_expander_field_formatter_settings_form($field, $instance, $view_
     '#title' => t('Collapse timer'),
     '#description' => t('Number of milliseconds after text has been expanded at which to collapse the text again.'),
     '#default_value' => $settings['collapseTimer'],
-    '#element_validate' => array('_element_validate_integer_positive'),
   );
 
   $element['userCollapseText'] = array(
