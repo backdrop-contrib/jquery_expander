@@ -111,6 +111,7 @@ function jquery_expander_field_formatter_view($entity_type, $entity, $field, $in
     }
   }
 
+  $module_path = backdrop_get_path('module', 'jquery_expander');
   foreach ($items as $delta => $item) {
     $output = _text_sanitize($instance, $langcode, $item, 'value');
     $element[$delta] = array(
@@ -119,8 +120,8 @@ function jquery_expander_field_formatter_view($entity_type, $entity, $field, $in
       '#suffix' => '</div>'
     );
     $element[$delta]['#attached']['js'] = array(
-      backdrop_get_path('module', 'jquery_expander') . '/js/jquery_expander.js' => array('type' => 'file'),
-      libraries_get_path('jquery.expander') . '/jquery.expander.js' => array('type' => 'file'),
+      $module_path . '/js/jquery_expander.js' => array('type' => 'file'),
+      $module_path . '/jquery.expander/jquery.expander.js' => array('type' => 'file'),
       array('data' => array('jqueryExpander' => array($delta => $settings)), 'type' => 'setting'),
     );
     ++$delta;
