@@ -2,5 +2,3 @@ name = Expander
 description = Field formatter to expand and collapse text of a field.
 backdrop = 1.x
 type = module
-
-dependencies[] = libraries
